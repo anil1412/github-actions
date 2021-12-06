@@ -1,1 +1,13 @@
+name: sample wf
 
+on: push
+
+jobs:
+  shell:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: run commands
+        run: |
+          pwd
+          node -v
