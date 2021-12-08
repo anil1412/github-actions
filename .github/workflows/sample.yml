@@ -1,6 +1,9 @@
 name: sample wf
 
-on: push
+on: 
+  issues: 
+    types: [opened, edited]
+  push:
 
 jobs:
   shell:
