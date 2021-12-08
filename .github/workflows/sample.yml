@@ -4,7 +4,8 @@ on:
   issues: 
     types: [opened, edited]
   push:
-
+  repository_dispatch:
+  
 jobs:
   shell:
     runs-on: ubuntu-latest
