@@ -26,6 +26,7 @@ jobs:
           from_event: "${{ github.event.issue.body }}"
         run: |
           #echo $from_event
-          body=$(python ./scripts/details.py $from_event)
-          echo $body
+          echo "body=$(python ./scripts/details.py $from_event)" >> $GITHUB_ENV
+      - name: Display body
+        run: echo $body
         
