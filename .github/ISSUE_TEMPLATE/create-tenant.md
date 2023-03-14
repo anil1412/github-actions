@@ -20,8 +20,10 @@ Enter-Customer-Name
 
 Initial-Email
 
-<!--- specify the justification for new tenant creation --->
+
 ### ---Purpose--- 
+  
+Enter-Purpose
 
 ### Required Approvers:
 <!--- DEVOPS modification ONLY --->
