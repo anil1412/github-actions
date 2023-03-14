@@ -2,9 +2,9 @@ import json
 import sys
 
 str = sys.argv[1]
-#print("###" in str)
+print('###' in str)
 
-print(str)
+#print(str)
 
 #str_i = str.split("###")
 #print(str_i[1])
