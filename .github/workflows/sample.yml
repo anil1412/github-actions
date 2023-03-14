@@ -28,7 +28,9 @@ jobs:
           #echo $from_event
           body=$(python ./scripts/details.py $from_event)
           echo "customer_name=$(echo $body | cut -d "|" -f 1)" >> $GITHUB_ENV
-          echo $customer_name
+          echo "init_user=$(echo $body | cut -d "|" -f 2)" >> $GITHUB_ENV
       - name: Display 
-        run: echo $customer_name
+        run: |
+          echo $customer_name
+          echo $init_user
         
