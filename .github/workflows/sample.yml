@@ -21,6 +21,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Chekout
         uses: actions/checkout@v2
-      - name: List files
-        run: ls -a
+      - name: Body
+        run: |
+          python --version
         
