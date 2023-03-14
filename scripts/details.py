@@ -4,8 +4,8 @@ import sys
 #str = sys.argv[1]
 #print('###' in str)
 
-print(' '.join(sys.argv))
-
+str = ' '.join(sys.argv)
+print(str)
 #print(len(sys.argv)-1)
 
 #str_i = str.split("###")
