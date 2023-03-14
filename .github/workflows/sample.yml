@@ -19,4 +19,8 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Chekout
+        uses: actions/checkout@v2
+      - name: List files
+        run: ls
         
