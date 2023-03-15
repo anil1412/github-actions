@@ -58,7 +58,7 @@ jobs:
             repo: "${{github.event.repository.name}}",
             body: "Please review and comment `/approve`, if you are an approver"
             })
-      - if: ( github.event_name == 'issue_comment' && github.event.action == 'created' && github.event.comment.body = '/approve' )
+      - if: ( github.event_name == 'issue_comment' && github.event.action == 'created' && github.event.comment.body == '/approve' )
         name: Checking approvval comment
         run: |
           python ./scripts/check-approver.py ${{ github.triggering_actor }}
