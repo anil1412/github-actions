@@ -62,10 +62,10 @@ jobs:
   approval-comment:
     if: ( github.event_name == 'issue_comment' )
     runs-on: ubuntu-latest
-    needs: issue-creation
-    env: 
-      customer_name: ${{ needs.issue-creation.outputs.customer_name}}
-      init_user: ${{ needs.issue-creation.outputs.init_user}}
+    #needs: issue-creation
+    #env: 
+      #customer_name: ${{ needs.issue-creation.outputs.customer_name}}
+      #init_user: ${{ needs.issue-creation.outputs.init_user}}
     steps:
       - name: Display 
         run: |
