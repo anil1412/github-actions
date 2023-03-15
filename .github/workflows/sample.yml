@@ -67,4 +67,3 @@ jobs:
       - name: Checking approval comment
         run: |
           python ./scripts/check-approver.py ${{ github.triggering_actor }}
-            - if: ( github.event_name == 'issues' && github.event.action == 'opened' )
