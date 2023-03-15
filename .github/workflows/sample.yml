@@ -3,8 +3,8 @@ name: sample wf
 on: 
   issues: 
     types: [opened, edited]
-  push:
-  repository_dispatch:
+  #push:
+  #repository_dispatch:
   
 jobs:
   shell:
@@ -19,6 +19,16 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Comment for getting approval
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+            issue_number: "${{github.event.issue.number}}",
+            owner: "${{github.repository_owner}}",
+            repo: "${{github.event.repository.name}}",
+            body: "Thanks for opening issue!! Please wait until the approvers approve"
+            })
       - name: Chekout
         uses: actions/checkout@v2
       - name: Body
@@ -33,4 +43,14 @@ jobs:
         run: |
           echo $customer_name
           echo $init_user
+      - name: Comment for getting approval
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+            issue_number: "${{github.event.issue.number}}",
+            owner: "${{github.repository_owner}}",
+            repo: "${{github.event.repository.name}}",
+            body: "The request is to create tenant for $customer_name having initial user as $init_user. Please comment `/approve`, if you are an approver"
+            })
         
