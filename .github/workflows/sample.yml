@@ -3,6 +3,8 @@ name: sample wf
 on: 
   issues: 
     types: [opened, edited]
+  issue_comment:
+    types: [created]
   #push:
   #repository_dispatch:
   
