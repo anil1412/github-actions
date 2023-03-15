@@ -47,7 +47,8 @@ jobs:
         run: |
           echo $customer_name
           echo $init_user
-      - name: Comment for getting approval
+      - if: ( github.event_name == 'issues' && github.event.action == 'opened' )
+        name: Comment for getting approval
         uses: actions/github-script@v6
         with:
           script: |
