@@ -39,12 +39,10 @@ jobs:
           body=$(python ./scripts/details.py $from_event)
           echo "customer_name=$(echo $body | cut -d "|" -f 1)" >> $GITHUB_ENV
           echo "init_user=$(echo $body | cut -d "|" -f 2)" >> $GITHUB_ENV
-          echo "comment=$(echo "The request is to create tenant for ${{ env.customer_name }} having initial user as ${{ env.init_user }}. Please comment /approve, if you are an approver")" >> $GITHUB_ENV
       - name: Display 
         run: |
           echo $customer_name
           echo $init_user
-          echo $comment
       - name: Comment for getting approval
         uses: actions/github-script@v6
         with:
@@ -53,6 +51,6 @@ jobs:
             issue_number: "${{github.event.issue.number}}",
             owner: "${{github.repository_owner}}",
             repo: "${{github.event.repository.name}}",
-            body: ${{ env.comment }}
+            body: "Please review and comment `/approve`, if you are an approver"
             })
         
