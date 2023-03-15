@@ -1,6 +1,7 @@
 {
     "users":[{"name": "Majeed Arni", "email": "majeed.arni@kyndryl.com", "user_id": " majeed-arni","role":"manager"},
              {"name": "Amod Bhise", "email": "amod.bhise@kyndryl.com", "user_id": "amodb","role":"manager"},
-             {"name": "Koteswararao Sakhamuri", "email": "Koteswararao.Sakhamuri@kyndryl.com", "user_id": "ksakha36","role":"manager"}
+             {"name": "Koteswararao Sakhamuri", "email": "Koteswararao.Sakhamuri@kyndryl.com", "user_id": "ksakha36","role":"manager"},
+             {"name": "Anil Mahapatra", "email": "anilmahapatra004@gmail.com", "user_id": "anil1412","role":"manager"}
             ]
  }
