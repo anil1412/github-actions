@@ -43,10 +43,12 @@ jobs:
           echo "customer_name=$(echo $body | cut -d "|" -f 1)" >> $GITHUB_ENV
           echo "init_user=$(echo $body | cut -d "|" -f 2)" >> $GITHUB_ENV
       - if: ( github.event_name == 'issues' && github.event.action == 'opened' )
-        name: Display 
+        name: Set output 
         run: |
           echo $customer_name
           echo $init_user
+          echo "::set-output customer_name=test::$customer_name"
+          echo "::set-output init_user=test::$init_user"
       - if: ( github.event_name == 'issues' && github.event.action == 'opened' )
         name: Comment for getting approval
         uses: actions/github-script@v6
@@ -59,12 +61,13 @@ jobs:
             body: "Please review and comment `/approve`, if you are an approver"
             })
       - if: ( github.event_name == 'issue_comment' && github.event.action == 'created' && github.event.comment.body == '/approve' )
-        name: Checking approvval comment
-        run: |
-          python ./scripts/check-approver.py ${{ github.triggering_actor }}
-            - if: ( github.event_name == 'issues' && github.event.action == 'opened' )
-      - if: ( github.event_name == 'issue_comment' && github.event.action == 'created' && github.event.comment.body == '/approve' )
         name: Display 
         run: |
           echo $customer_name
           echo $init_user
+      - if: ( github.event_name == 'issue_comment' && github.event.action == 'created' && github.event.comment.body == '/approve' )
+        name: Checking approval comment
+        run: |
+          python ./scripts/check-approver.py ${{ github.triggering_actor }}
+            - if: ( github.event_name == 'issues' && github.event.action == 'opened' )
+
