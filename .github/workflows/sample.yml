@@ -12,6 +12,9 @@ jobs:
   issue-creation:
     if: ( github.event_name == 'issues' && github.event.action == 'opened' )
     runs-on: ubuntu-latest
+    outputs:
+      customer_name: ${{ steps.set_output.outputs.data1 }}
+      init_user: ${{ steps.set_output.outputs.data2 }}
     steps: 
       - name: Dump GitHub context
         env:
@@ -40,11 +43,12 @@ jobs:
           echo "customer_name=$(echo $body | cut -d "|" -f 1)" >> $GITHUB_ENV
           echo "init_user=$(echo $body | cut -d "|" -f 2)" >> $GITHUB_ENV
       - name: Set output
+        id: set_output
         run: |
           echo $customer_name
           echo $init_user
-          echo "::set-output customer_name=test::$customer_name"
-          echo "::set-output init_user=test::$init_user"
+          echo "::set-output name=data1::$customer_name"
+          echo "::set-output name=data2::$init_user"
       - name: Comment for getting approval
         uses: actions/github-script@v6
         with:
