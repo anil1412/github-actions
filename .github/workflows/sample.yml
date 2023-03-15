@@ -47,10 +47,11 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const comment=`The request is to create tenant for ${customer_name} having initial user as ${init_user}. Please comment `/approve`, if you are an approver`
             github.rest.issues.createComment({
             issue_number: "${{github.event.issue.number}}",
             owner: "${{github.repository_owner}}",
             repo: "${{github.event.repository.name}}",
-            body: "The request is to create tenant for ${customer_name} having initial user as ${init_user}. Please comment `/approve`, if you are an approver"
+            body: comment
             })
         
