@@ -62,3 +62,9 @@ jobs:
         name: Checking approvval comment
         run: |
           python ./scripts/check-approver.py ${{ github.triggering_actor }}
+            - if: ( github.event_name == 'issues' && github.event.action == 'opened' )
+      - if: ( github.event_name == 'issue_comment' && github.event.action == 'created' && github.event.comment.body == '/approve' )
+        name: Display 
+        run: |
+          echo $customer_name
+          echo $init_user
